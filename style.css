@@ -4,55 +4,94 @@ body {
     background-color: #f4f4f4;
 }
 .container {
-    max-width: 900px;
+    max-width: 960px; /* Wider for calendar */
     margin: auto;
     background: white;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-h1, h2 {
+h1 {
     color: #333;
     text-align: center;
+    margin-bottom: 20px;
 }
-.day-card {
+
+.month-header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.month-header h2 {
+    color: #007bff;
+    font-size: 1.8em;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.calendar-day-card {
     border: 1px solid #ddd;
+    border-radius: 8px;
     padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: space-between; /* Pushes weather info to bottom if content is short */
+    min-height: 150px; /* Ensure cards have some height */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out;
 }
-.day-card label {
+.calendar-day-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.calendar-day-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 1.2em;
+    text-align: center;
+}
+.calendar-day-card .location-display {
     font-weight: bold;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 10px;
+    min-height: 1.5em; /* Ensure consistent height even if no location */
 }
-.day-card input[type="text"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: calc(100% - 100px); /* Adjust width as needed */
-}
-.weather-info {
-    margin-top: 10px;
+.calendar-day-card .weather-info {
+    margin-top: auto; /* Push to bottom */
     padding: 10px;
     background-color: #e9e9e9;
     border-radius: 4px;
+    font-size: 0.9em;
+    color: #666;
+    min-height: 40px; /* Ensure space for weather info */
+    display: flex;
+    align-items: center; /* Vertically align text */
+    justify-content: center; /* Horizontally align text */
+    text-align: center;
 }
+
 button {
-    padding: 10px 15px;
-    background-color: #007bff;
+    padding: 12px 25px;
+    background-color: #28a745; /* Green button for "Get Weather" */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 20px;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    transition: background-color 0.2s ease;
 }
 button:hover {
-    background-color: #0056b3;
+    background-color: #218838;
 }
